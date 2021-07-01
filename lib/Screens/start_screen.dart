@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wall/Screens/register_screen.dart';
-
-import 'login_screen.dart';
+import 'package:flutter_wall/Screens/choose_screen.dart';
+import 'package:flutter_wall/Screens/login_screen.dart';
+import 'package:flutter_wall/Screens/student_register_screen.dart';
+import 'package:flutter_wall/Services/AuthenticationService.dart';
+import 'package:provider/provider.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({ Key key }) : super(key: key);
@@ -33,14 +35,20 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                   ElevatedButton(
                     onPressed:(){
-                      Navigator.of(context).pushNamed(RegisterScreen.routeName);
+                      
+                      Navigator.of(context).pushNamed(ChooseScreen.routeName);
                     },
                     child: Text("Register"),
                   ),
                 ],
               ),
 
-              
+              ElevatedButton(
+                onPressed:(){
+                  context.read<AuthenticationService>().signInAnon();
+                },
+                child: Text("Continue as Guest"),
+              ),
              
             ],
           ),

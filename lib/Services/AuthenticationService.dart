@@ -24,4 +24,13 @@ class AuthenticationService{
       throw e;
     }
   }
+
+  Future<String> signInAnon() async {
+    try{
+      await firebaseAuth.signInAnonymously();
+      return "Guest sign in";
+    } on FirebaseAuthException catch (e){
+      throw e;
+    }
+  }
 }

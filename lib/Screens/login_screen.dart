@@ -75,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
               child: TextFormField(
                 controller: _pwTextController,
+                obscureText: true,
               ),
             ),
             ButtonBar(

@@ -5,6 +5,9 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_wall/Screens/initial_screen.dart';
 import 'package:flutter_wall/Services/RouteGenerator.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
+
 import 'Services/AuthenticationService.dart';
 
 Future<void> main() async {
@@ -30,6 +33,18 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Wall',
+        builder: (context, widget) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, widget),
+          maxWidth: 1920,
+          minWidth: 480,
+          defaultScale: true,
+          breakpoints: [
+            ResponsiveBreakpoint.autoScale(480, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+          ],
+          background: Container(color: Colors.white)
+        ),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

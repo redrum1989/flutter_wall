@@ -66,6 +66,10 @@ firebase_core_web
 2.12
 file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.1.0/
 file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.1.0/lib/
+flutter_datetime_picker
+2.12
+file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1/
+file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1/lib/
 flutter_phoenix
 2.12
 file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_phoenix-1.0.0/
@@ -106,6 +110,10 @@ provider
 2.12
 file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0/
 file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0/lib/
+responsive_framework
+2.12
+file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_framework-0.1.2/
+file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_framework-0.1.2/lib/
 source_span
 2.12
 file:///D:/Program%20Files/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.1/
