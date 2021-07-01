@@ -54,20 +54,20 @@ class _MainMenuState extends State<MainMenu> {
             child: Column(
               children: [
 
-                      Expanded(
-                        child: StreamProvider<List<Post>>.value(
-                          value: PostsGetter().postData,
-                          initialData: [],
-                          child: PostBanner(),
-                        ),
-                      ),
+                Expanded(
+                  child: StreamProvider<List<Post>>.value(
+                    value: PostsGetter().postData,
+                    initialData: [],
+                    child: PostBanner(),
+                  ),
+                ),
 
-                      ElevatedButton(
-                        onPressed: (){
-                          context.watch<AuthenticationService>().signOut();
-                        },
-                        child: Text("Logout")
-                      ),
+                ElevatedButton(
+                  onPressed: (){
+                    context.watch<AuthenticationService>().signOut();
+                  },
+                  child: Text("Logout")
+                ),
 
               ],
             ),

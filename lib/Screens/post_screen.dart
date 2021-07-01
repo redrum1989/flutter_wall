@@ -23,50 +23,81 @@ class _PostScreenState extends State<PostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        backgroundColor: Colors.transparent
-      ),
-      body: SafeArea(
-        child: ListView(
-          children: [
-
-            Expanded(
-              child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("Permission").doc(authorUID).snapshots(),
-                builder: (context, snapshot){
-                  if((snapshot == null)|| (snapshot.data==null)) {
-                    return Center(child: CircularProgressIndicator());
-                  } else {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        StreamBuilder(
-                          stream: (snapshot.data["permission"] == "Student") ? 
-                            FirebaseFirestore.instance.collection("Students Info").doc(authorUID).snapshots() : 
-                            FirebaseFirestore.instance.collection("Alumni Info").doc(authorUID).snapshots(),
-                          builder: (context, secondSnapshot){
-                            if((secondSnapshot == null)||(secondSnapshot.data==null)){
-                              return Center(child: CircularProgressIndicator());
-                            } else {
-                              return Text(secondSnapshot.data["name"]);
-                            }
-                          }
-                        ),
-                        Text((snapshot != null) ? snapshot.data["permission"] : ""),
-                      ],
-                    );
-                  }
-                }
-              ),
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          Scaffold(
+            extendBodyBehindAppBar: true,
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              centerTitle: true,
+              iconTheme: IconThemeData(color: Colors.black),
+              title: Text(title, style: TextStyle(color: Colors.black)),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
             ),
+            body: Stack(
+              children: [
 
-            Text(title),
+                // Put background here.
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.red[100],
+                    image: DecorationImage(
+                      image: AssetImage("assets/img/background.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
 
-            Center(child: Text(text)),
-            
-          ],
-        ),
+                SafeArea(
+                  child: ListView(
+                    
+                    children: [
+
+                      StreamBuilder(
+                        stream: FirebaseFirestore.instance.collection("Permission").doc(authorUID).snapshots(),
+                        builder: (context, snapshot){
+                          if((snapshot == null)|| (snapshot.data==null)) {
+                            return Center(child: CircularProgressIndicator());
+                          } else {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                StreamBuilder(
+                                  stream: (snapshot.data["permission"] == "Student") ? 
+                                    FirebaseFirestore.instance.collection("Students Info").doc(authorUID).snapshots() : 
+                                    FirebaseFirestore.instance.collection("Alumni Info").doc(authorUID).snapshots(),
+                                  builder: (context, secondSnapshot){
+                                    if((secondSnapshot == null)||(secondSnapshot.data==null)){
+                                      return Center(child: CircularProgressIndicator());
+                                    } else {
+                                      return Text(secondSnapshot.data["name"]);
+                                    }
+                                  }
+                                ),
+                                Text((snapshot != null) ? snapshot.data["permission"] : ""),
+                              ],
+                            );
+                          }
+                        }
+                      ),
+
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(title),
+                          Text(text),
+                        ],
+                      ),
+                      
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
