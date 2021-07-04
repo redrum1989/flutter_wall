@@ -22,12 +22,26 @@ class _StartScreenState extends State<StartScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("hello people"),
+              Column(
+                children: [
+                  Container(
+                    child: Image.asset("assets/img/logo 2-02.png"),
+                  ),
+                ],
+              ),
 
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xfffe4f00)),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22.0),
+                        ),
+                      ),
+                    ),
                     onPressed:(){
                       Navigator.of(context).pushNamed(LoginScreen.routeName);
                     },
