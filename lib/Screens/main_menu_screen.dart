@@ -64,7 +64,7 @@ class _MainMenuState extends State<MainMenu> {
 
                 ElevatedButton(
                   onPressed: (){
-                    context.watch<AuthenticationService>().signOut();
+                    context.read<AuthenticationService>().signOut();
                   },
                   child: Text("Logout")
                 ),
